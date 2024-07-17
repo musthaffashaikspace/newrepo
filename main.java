@@ -12,6 +12,7 @@ public class SortingAlgorithms {
         for (int i = 0; i < n; i++) {
             arr[i] = scanner.nextInt();
         }
+
         // Prompt user to choose algorithm
         System.out.println("Choose a sorting algorithm:");
         System.out.println("1. Selection Sort");
@@ -40,8 +41,10 @@ public class SortingAlgorithms {
                 break;
             case 3:
                 startTime = System.nanoTime();
-                mergeSort(arr,0,arr.length-1);
+                mergeSort(arr, 0, arr.length - 1);
                 endTime = System.nanoTime();
+                System.out.println("Sorted array using Merge Sort:");
+                printArray(arr);
                 break;
             case 4:
                 startTime = System.nanoTime();
@@ -69,7 +72,6 @@ public class SortingAlgorithms {
             quickSort(arr, pi + 1, high);
         }
     }
-<<<<<<< HEAD
 
     private static int partition(int[] arr, int low, int high) {
         int pivot = arr[high];
@@ -91,30 +93,41 @@ public class SortingAlgorithms {
         return i + 1;
     }
 
-    public static void mergeSort(int[] arr) {
-=======
-   
-      
-     public static void merge(int[] arr, int left, int middle, int right) {
+    public static void mergeSort(int[] arr, int left, int right) {
+        if (left < right) {
+            // Find the middle point
+            int middle = left + (right - left) / 2;
+
+            // Sort first and second halves
+            mergeSort(arr, left, middle);
+            mergeSort(arr, middle + 1, right);
+
+            // Merge the sorted halves
+            merge(arr, left, middle, right);
+        }
+    }
+
+    public static void merge(int[] arr, int left, int middle, int right) {
         // Find sizes of two subarrays to be merged
         int n1 = middle - left + 1;
         int n2 = right - middle;
 
-        // Create temp arrays
+        // Create temporary arrays
         int[] L = new int[n1];
         int[] R = new int[n2];
 
-        // Copy data to temp arrays
-        System.arraycopy(arr, left, L, 0, n1);
-        System.arraycopy(arr, middle + 1, R, 0, n2);
+        // Copy data to temporary arrays L[] and R[]
+        for (int i = 0; i < n1; ++i) {
+            L[i] = arr[left + i];
+        }
+        for (int j = 0; j < n2; ++j) {
+            R[j] = arr[middle + 1 + j];
+        }
 
-        // Merge the temp arrays
-
-        // Initial indexes of first and second subarrays
+        // Merge the temporary arrays back into arr[left..right]
         int i = 0, j = 0;
+        int k = left; // Initial index of merged subarray
 
-        // Initial index of merged subarray array
-        int k = left;
         while (i < n1 && j < n2) {
             if (L[i] <= R[j]) {
                 arr[k] = L[i];
@@ -139,23 +152,6 @@ public class SortingAlgorithms {
             j++;
             k++;
         }
-    }
-    public static void mergeSort(int[] arr,int left, int right) {
->>>>>>> fayaz
-        System.out.println("Merge Sort Algorithm");
-        // Implementation of Merge Sort
-         if (left < right) {
-            // Find the middle point
-            int middle = left + (right - left) / 2;
-
-            // Sort first and second halves
-            mergeSort(arr, left, middle);
-            mergeSort(arr, middle + 1, right);
-
-            // Merge the sorted halves
-            merge(arr, left, middle, right);
-        }
-        
     }
 
     public static void insertionSort(int[] arr) {
