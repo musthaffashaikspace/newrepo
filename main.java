@@ -60,15 +60,13 @@ public class SortingAlgorithms {
     }
 
     public static void selectionSort(int[] arr) {
-        System.out.println("Selection Sort Algorithm");
-        // Implementation of Selection Sort
-	int n = arr.length;
-        for (int i = 0; i < n; i++) {
-		// Find the minimum element in the remaining unsorted part of the array
-                int minIndex = i;
-                for (int j = i + 1; j < n; j++) {
-                   if (arr[j] < arr[minIndex]) {
-                       minIndex = j;
+    int n = arr.length;
+    for (int i = 0; i < n; i++) {
+        // Find the minimum element in the remaining unsorted part of the array
+        int minIndex = i;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
             }
         }
         
@@ -77,7 +75,7 @@ public class SortingAlgorithms {
         arr[i] = arr[minIndex];
         arr[minIndex] = temp;
     }
-    }
+}
 
     public static void quickSort(int[] arr, int low, int high) {
         if (low < high) {
