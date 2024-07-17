@@ -60,6 +60,8 @@ public class SortingAlgorithms {
     }
 
     public static void selectionSort(int[] arr) {
+    System.out.println("Array before sorting:");
+        printArray(arr);
     int n = arr.length;
     for (int i = 0; i < n; i++) {
         // Find the minimum element in the remaining unsorted part of the array
@@ -75,6 +77,8 @@ public class SortingAlgorithms {
         arr[i] = arr[minIndex];
         arr[minIndex] = temp;
     }
+    System.out.println("Array after sorting:");
+        printArray(arr);
 }
 
     public static void quickSort(int[] arr, int low, int high) {
